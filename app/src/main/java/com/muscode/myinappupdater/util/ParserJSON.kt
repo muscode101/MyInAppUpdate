@@ -12,7 +12,9 @@ import java.net.URL
 import java.nio.charset.Charset
 
 class ParserJSON(url: String?) {
+
     private var jsonUrl: URL? = null
+
     fun parse(): Update? {
         try {
             val json = readJsonFromUrl()
