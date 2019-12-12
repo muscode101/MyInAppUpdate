@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyInAppUpdater</string>
+    <string name="apkPath">/mnt/sdcard/Download/update.apk</string>
+
+    <string name="apkUri">http://192.168.43.38/MyAppStore/update.apk</string>
+    <string name="jsonUri">http://192.168.43.38/MyAppStore/update-changelog.json</string>
+</resources>
