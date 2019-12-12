@@ -23,13 +23,22 @@ class MainActivity : AppCompatActivity() {
 
     private val allPermission = 1001
     private val installerRequestCode = 1002
-    private val permissions = arrayOf(
-        Manifest.permission.INTERNET,
-        Manifest.permission.ACCESS_NETWORK_STATE,
-        Manifest.permission.REQUEST_INSTALL_PACKAGES,
-        Manifest.permission.READ_EXTERNAL_STORAGE,
-        Manifest.permission.WRITE_EXTERNAL_STORAGE
-    )
+    private val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        arrayOf(
+            Manifest.permission.INTERNET,
+            Manifest.permission.ACCESS_NETWORK_STATE,
+            Manifest.permission.REQUEST_INSTALL_PACKAGES,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+    } else {
+        arrayOf(
+            Manifest.permission.INTERNET,
+            Manifest.permission.ACCESS_NETWORK_STATE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

@@ -2,6 +2,5 @@
     <string name="app_name">MyInAppUpdater</string>
     <string name="apkPath">/mnt/sdcard/Download/update.apk</string>
 
-    <string name="apkUri">http://192.168.43.38/MyAppStore/update.apk</string>
-    <string name="jsonUri">http://192.168.43.38/MyAppStore/update-changelog.json</string>
+    <string name="jsonUri"><![CDATA[https://firebasestorage.googleapis.com/v0/b/book-now-zambia.appspot.com/o/apk%2Fupdate-changelog.json?alt=media&token=8fa48ee2-7f6f-4ca4-9c42-6b85fd8ae33b]]></string>
 </resources>

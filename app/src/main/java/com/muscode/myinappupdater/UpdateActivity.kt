@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import com.muscode.myinappupdater.util.GetJsonTask
 import java.io.File
 
 
@@ -24,10 +25,16 @@ class UpdateActivity : AppCompatActivity() {
     private val downloadedAppName = "NewUpdate.apk"
     private var downloadedApkPath = Environment.getExternalStorageDirectory().toString() + "/Download/" + downloadedAppName
     private var receiver: BroadcastReceiver? = null
+    private lateinit var jsonUri:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setJsonUri()
         showDialog()
+    }
+
+    private fun setJsonUri(){
+        jsonUri = getString(R.string.jsonUri)
     }
 
     private fun showDialog() {
@@ -59,10 +66,13 @@ class UpdateActivity : AppCompatActivity() {
     }
 
     private fun downloadFile() {
-        val apkUri =
-            "https://firebasestorage.googleapis.com/v0/b/bur-io.appspot.com/o/Real%20Chess_v2.85_apkpure.com.apk?alt=media&token=a2003589-9f8e-416d-bde0-72685d0060c7"
+
+
+        val jsonResponse = GetJsonTask(jsonUri).execute().get()!!
+        val urlToDownload = jsonResponse.urlToDownload.toString()
+
         val downloadedAppName = "NewUpdate.apk"
-        val request = DownloadManager.Request(Uri.parse(apkUri))
+        val request = DownloadManager.Request(Uri.parse(urlToDownload))
 
         request.setTitle("Download Apk Update")
         request.setDescription("download update for app")

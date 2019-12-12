@@ -6,9 +6,10 @@ class UpdateUtil(var jsonUri:String) {
     var isUpdateAvailable = checkUpdates()
 
     private fun checkUpdates(): Boolean {
-        val appUpdateTask = AppUpdateTask(jsonUri)
-        val versioncode = appUpdateTask.execute()
-        return !versioncode.get().equals(BuildConfig.VERSION_CODE.toString())
+        val getJsonTask = GetJsonTask(jsonUri)
+        val versioncode = getJsonTask.execute().get()!!.latestVersion
+
+        return !versioncode.equals(BuildConfig.VERSION_CODE.toString())
     }
 
 }
